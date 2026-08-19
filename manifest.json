@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.edgarsilva.power-button",
+  "name": "Power Button",
+  "version": "1.0.0",
+  "author": "Edgar Silva",
+  "license": "MIT",
+  "description": "A power button for the bar with a keyboard-navigable session menu: screens off, lock, suspend, shutdown, reboot, logout.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "Power Button",
+    "description": "One click opens a session menu. Arrow keys or number keys pick an action; destructive ones confirm first. Every action runs Omarchy's own omarchy-system-* script.",
+    "category": "System",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "icon": "󰐥",
+      "items": [],
+      "confirm": "Destructive actions",
+      "rightClickAction": "Lock",
+      "showGroupHeaders": true,
+      "showDescriptions": true,
+      "showNumbers": true,
+      "screenOffCommand": "",
+      "screenOffDelayMs": 400
+    },
+    "schema": [
+      {
+        "key": "items",
+        "type": "multiselect",
+        "label": "Actions",
+        "description": "Which actions the menu offers. Leave empty to show them all.",
+        "noSelectionText": "All actions",
+        "placeholderText": "Search actions...",
+        "emptyText": "No actions",
+        "options": [
+          {
+            "value": "Turn screens off",
+            "label": "Turn screens off",
+            "description": "Hyprland DPMS off — the only action with no omarchy-* script behind it"
+          },
+          {
+            "value": "Lock",
+            "label": "Lock",
+            "description": "omarchy-system-lock"
+          },
+          {
+            "value": "Suspend",
+            "label": "Suspend",
+            "description": "systemctl suspend — hidden while the suspend-off toggle is set"
+          },
+          {
+            "value": "Hibernate",
+            "label": "Hibernate",
+            "description": "systemctl hibernate — only offered where omarchy-hibernation-available succeeds"
+          },
+          {
+            "value": "Shutdown",
+            "label": "Shutdown",
+            "description": "omarchy-system-shutdown"
+          },
+          {
+            "value": "Reboot",
+            "label": "Reboot",
+            "description": "omarchy-system-reboot"
+          },
+          {
+            "value": "Logout",
+            "label": "Logout",
+            "description": "omarchy-system-logout"
+          }
+        ],
+        "defaultValue": []
+      },
+      {
+        "key": "confirm",
+        "type": "enum",
+        "label": "Ask before running",
+        "options": [
+          "Never",
+          "Destructive actions",
+          "Every action"
+        ],
+        "defaultValue": "Destructive actions",
+        "description": "Destructive actions means Shutdown, Reboot, and Logout — the three that lose unsaved work."
+      },
+      {
+        "key": "rightClickAction",
+        "type": "enum",
+        "label": "Right click on the bar icon",
+        "options": [
+          "None",
+          "Turn screens off",
+          "Lock",
+          "Suspend",
+          "Shutdown",
+          "Reboot",
+          "Logout"
+        ],
+        "defaultValue": "Lock",
+        "description": "Runs straight away without opening the menu, and without the confirmation prompt."
+      },
+      {
+        "key": "icon",
+        "type": "string",
+        "label": "Bar icon",
+        "defaultValue": "󰐥",
+        "description": "Nerd Font glyph shown in the bar."
+      },
+      {
+        "key": "showGroupHeaders",
+        "type": "boolean",
+        "label": "Group the menu into Screen and Session",
+        "defaultValue": true
+      },
+      {
+        "key": "showDescriptions",
+        "type": "boolean",
+        "label": "Show a line of description under each action",
+        "defaultValue": true,
+        "description": "Turn off for a compact menu."
+      },
+      {
+        "key": "showNumbers",
+        "type": "boolean",
+        "label": "Show the number key beside each action",
+        "defaultValue": true
+      },
+      {
+        "key": "screenOffCommand",
+        "type": "string",
+        "label": "Turn screens off command",
+        "defaultValue": "",
+        "description": "Leave empty for Hyprland's DPMS dispatcher. The only action with no Omarchy script behind it."
+      },
+      {
+        "key": "screenOffDelayMs",
+        "type": "integer",
+        "label": "Delay before turning screens off (ms)",
+        "min": 0,
+        "max": 5000,
+        "step": 50,
+        "defaultValue": 400,
+        "description": "Gives the mouse button time to come back up. Without it the release can wake the displays straight back on."
+      }
+    ]
+  },
+  "repository": "https://github.com/edgarsilva/omarchy-power-button"
+}
