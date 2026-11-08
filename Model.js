@@ -63,7 +63,7 @@ var ACTIONS = [
     icon: "󰐥",
     group: "Session",
     detail: "Power the machine off",
-    command: "omarchy-system shutdown",
+    command: "omarchy system shutdown",
     destructive: true
   },
   {
@@ -72,7 +72,7 @@ var ACTIONS = [
     icon: "󰜉",
     group: "Session",
     detail: "Restart the machine",
-    command: "omarchy-system reboot",
+    command: "omarchy system reboot",
     destructive: true
   },
   {
@@ -81,7 +81,7 @@ var ACTIONS = [
     icon: "󰍃",
     group: "Session",
     detail: "End the Hyprland session",
-    command: "omarchy-system logout",
+    command: "omarchy system logout",
     destructive: true
   }
 ]

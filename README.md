@@ -6,7 +6,7 @@ keystroke away, and the three that lose unsaved work ask first.
 ![The panel, listing the session actions](preview.png)
 
 Every action runs Omarchy's own session script — `omarchy-system-lock`,
-`omarchy-system shutdown`, `omarchy-system reboot`, `omarchy-system logout`,
+`omarchy system shutdown`, `omarchy system reboot`, `omarchy system logout`,
 `systemctl suspend` — rather than reimplementing what they do. Whatever those
 grow later, this widget inherits. Only **Turn screens off** has no Omarchy
 equivalent, so it dispatches to Hyprland directly.
@@ -64,9 +64,9 @@ throughout.
 | Lock | `omarchy-system-lock` | Locks the session, resets the keyboard layout, locks 1Password, stops the screensaver. It does **not** turn the displays off |
 | Suspend | `systemctl suspend` | Hidden while the `suspend-off` toggle is set |
 | Hibernate | `systemctl hibernate` | Only where `omarchy-hibernation-available` succeeds |
-| Shutdown | `omarchy-system shutdown` | Confirms first |
-| Reboot | `omarchy-system reboot` | Confirms first |
-| Logout | `omarchy-system logout` | Confirms first |
+| Shutdown | `omarchy system shutdown` | Confirms first |
+| Reboot | `omarchy system reboot` | Confirms first |
+| Logout | `omarchy system logout` | Confirms first |
 
 Actions run detached, on purpose: Logout and Shutdown tear down the session the
 shell itself lives in, and a tracked subprocess would be killed mid-flight by
