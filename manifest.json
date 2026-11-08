@@ -62,17 +62,17 @@
           {
             "value": "Shutdown",
             "label": "Shutdown",
-            "description": "omarchy-system-shutdown"
+            "description": "omarchy-system shutdown"
           },
           {
             "value": "Reboot",
             "label": "Reboot",
-            "description": "omarchy-system-reboot"
+            "description": "omarchy-system reboot"
           },
           {
             "value": "Logout",
             "label": "Logout",
-            "description": "omarchy-system-logout"
+            "description": "omarchy-system logout"
           }
         ],
         "defaultValue": []
