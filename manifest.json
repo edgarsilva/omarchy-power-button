@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "io.github.edgarsilva.power-button",
   "name": "Power Button",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Edgar Silva",
   "license": "MIT",
   "description": "A power button for the bar with a keyboard-navigable session menu: screens off, lock, suspend, shutdown, reboot, logout.",
@@ -14,7 +14,7 @@
   },
   "barWidget": {
     "displayName": "Power Button",
-    "description": "One click opens a session menu. Arrow keys or number keys pick an action; destructive ones confirm first. Every action runs Omarchy's own omarchy-system-* script.",
+    "description": "One click opens a session menu. Arrow keys or number keys pick an action; destructive ones confirm first. Actions run Omarchy's own omarchy-system or omarchy-system-lock command where one exists, and the same commands Omarchy's own system menu runs where none does.",
     "category": "System",
     "allowMultiple": false,
     "defaultSection": "right",
@@ -62,17 +62,17 @@
           {
             "value": "Shutdown",
             "label": "Shutdown",
-            "description": "omarchy-system-shutdown"
+            "description": "omarchy-system shutdown"
           },
           {
             "value": "Reboot",
             "label": "Reboot",
-            "description": "omarchy-system-reboot"
+            "description": "omarchy-system reboot"
           },
           {
             "value": "Logout",
             "label": "Logout",
-            "description": "omarchy-system-logout"
+            "description": "omarchy-system logout"
           }
         ],
         "defaultValue": []

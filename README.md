@@ -5,11 +5,15 @@ keystroke away, and the three that lose unsaved work ask first.
 
 ![The panel, listing the session actions](preview.png)
 
-Every action runs Omarchy's own session script — `omarchy-system-lock`,
-`omarchy-system-shutdown`, `omarchy-system-reboot`, `omarchy-system-logout`,
-`systemctl suspend` — rather than reimplementing what they do. Whatever those
-grow later, this widget inherits. Only **Turn screens off** has no Omarchy
-equivalent, so it dispatches to Hyprland directly.
+Lock, Shutdown, Reboot, and Logout run Omarchy's own session scripts —
+`omarchy-system-lock`, `omarchy-system shutdown`, `omarchy-system reboot`,
+`omarchy-system logout` — rather than reimplementing what they do. Whatever
+those grow later, this widget inherits.
+
+**Suspend** and **Hibernate** have no such script, so they run `systemctl
+suspend` and `systemctl hibernate`, which is exactly what Omarchy's own system
+menu runs, behind exactly the same availability conditions. **Turn screens off**
+has no Omarchy equivalent at all and dispatches to Hyprland directly.
 
 ## Install
 
@@ -64,9 +68,9 @@ throughout.
 | Lock | `omarchy-system-lock` | Locks the session, resets the keyboard layout, locks 1Password, stops the screensaver. It does **not** turn the displays off |
 | Suspend | `systemctl suspend` | Hidden while the `suspend-off` toggle is set |
 | Hibernate | `systemctl hibernate` | Only where `omarchy-hibernation-available` succeeds |
-| Shutdown | `omarchy-system-shutdown` | Confirms first |
-| Reboot | `omarchy-system-reboot` | Confirms first |
-| Logout | `omarchy-system-logout` | Confirms first |
+| Shutdown | `omarchy-system shutdown` | Confirms first |
+| Reboot | `omarchy-system reboot` | Confirms first |
+| Logout | `omarchy-system logout` | Confirms first |
 
 Actions run detached, on purpose: Logout and Shutdown tear down the session the
 shell itself lives in, and a tracked subprocess would be killed mid-flight by
@@ -179,7 +183,7 @@ o.bind("SUPER + CTRL + ALT + P", "Power menu",
 ## Requirements
 
 - A Nerd Font for the glyphs, which Omarchy already ships
-- Omarchy's `omarchy-system-*` scripts, which it also already ships
+- Omarchy's `omarchy-system` and `omarchy-system-lock` commands, which it also already ships
 - `hyprctl`, for **Turn screens off** only
 
 No pip packages, no daemon, no elevated privileges. The widget writes nothing:

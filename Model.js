@@ -1,10 +1,21 @@
 .pragma library
 
-// The action catalogue. Commands are Omarchy's own session scripts wherever
-// one exists (`omarchy-system-*`, `omarchy-launch-screensaver`) so this plugin
-// inherits whatever those grow later — confirmation prompts, sleep locks,
-// update-on-reboot — instead of forking their behaviour into QML. Only
-// "Turn screens off" has no Omarchy equivalent, so it dispatches to Hyprland.
+// The action catalogue. Commands are Omarchy's own `omarchy-system*` scripts
+// wherever one exists, so this plugin inherits whatever those grow later —
+// confirmation prompts, sleep locks, update-on-reboot — instead of forking
+// their behaviour into QML.
+//
+// Two actions have no such script, and both take Omarchy's own answer rather
+// than inventing one:
+//
+//   Suspend/Hibernate  Omarchy ships no wrapper (there is no `omarchy system
+//                      suspend` route), so its default menu runs systemctl
+//                      directly and this catalogue matches it verbatim —
+//                      commands and availability conditions both. See
+//                      omarchy-menu.jsonc `system.suspend` / `system.hibernate`
+//                      in Omarchy's `default/omarchy/`.
+//   Turn screens off   No Omarchy equivalent at all, so it dispatches to
+//                      Hyprland.
 //
 // `key` is deliberately absent: PanelKeyCatcher already claims h/j/k/l for
 // cursor movement and x for delete, which rules out the obvious first-letter
@@ -63,7 +74,7 @@ var ACTIONS = [
     icon: "󰐥",
     group: "Session",
     detail: "Power the machine off",
-    command: "omarchy-system-shutdown",
+    command: "omarchy-system shutdown",
     destructive: true
   },
   {
@@ -72,7 +83,7 @@ var ACTIONS = [
     icon: "󰜉",
     group: "Session",
     detail: "Restart the machine",
-    command: "omarchy-system-reboot",
+    command: "omarchy-system reboot",
     destructive: true
   },
   {
@@ -81,7 +92,7 @@ var ACTIONS = [
     icon: "󰍃",
     group: "Session",
     detail: "End the Hyprland session",
-    command: "omarchy-system-logout",
+    command: "omarchy-system logout",
     destructive: true
   }
 ]
